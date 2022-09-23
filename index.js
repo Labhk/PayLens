@@ -118,8 +118,12 @@ app.post("/callback", (req, res) => {
            console.log('S2S Response: ', response, "\n");
            console.log(">>>>>".response)
            var _results = JSON.parse(response);
+           var sat = _results.STATUS;
+           var dat = _results.TXNDATE;
+           var bak = _results.BANKNAME;
+
            /* where it will come back after payment*/
-           res.redirect(`http://localhost:3000/viewBooking?status=${_results.STATUS}&ORDERID=${_results.ORDERID}&date=${_results.TXNDATE}&bank=${_results.BANKNAME}`)
+           res.redirect(`http://localhost:3000/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${dat.split('%')[0]}&bank=${bak.split('%')[0]}`)
            });
        });
 
