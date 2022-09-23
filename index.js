@@ -120,12 +120,9 @@ app.post("/callback", (req, res) => {
            var _results = JSON.parse(response);
            var sat = _results.STATUS;
            var dat = _results.TXNDATE;
-           var odate = dat.split('%')[0];
-           var bak = _results.BANKNAME;
-           var obank = bak.split('%')[0];
 
            /* where it will come back after payment*/
-           res.redirect(`http://localhost:3000/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${odate}&bank=${obank}`)
+           res.redirect(`http://localhost:3000/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${_results.TXNDATE.split('%')[1]}&bank=${_results.BANKNAME.split('%')[0]}`)
            });
        });
 
