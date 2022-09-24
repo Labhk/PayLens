@@ -41,7 +41,7 @@ if(!paymentDetails.amount || !paymentDetails.customerId || !paymentDetails.custo
     params['CUST_ID'] = paymentDetails.customerId;
     params['TXN_AMOUNT'] = paymentDetails.amount;
     /* where is app is hosted (heroku url)*/
-    params['CALLBACK_URL'] = 'https://lens-lk-kart.netlify.app/';
+    params['CALLBACK_URL'] = 'http://pay-lens.herokuapp.com/callback';
     params['EMAIL'] = paymentDetails.customerEmail;
     params['MOBILE_NO'] = paymentDetails.customerPhone;
   
@@ -122,7 +122,7 @@ app.post("/callback", (req, res) => {
            var dat = _results.TXNDATE;
 
            /* where it will come back after payment*/
-           res.redirect(`http://localhost:3000/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${_results.TXNDATE.slice(0,10)}&bank=${_results.BANKNAME.split('%')[0]}`)
+           res.redirect(`https://lens-lk-kart.netlify.app`)
            });
        });
 
