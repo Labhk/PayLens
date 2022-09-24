@@ -122,7 +122,7 @@ app.post("/callback", (req, res) => {
            var dat = _results.TXNDATE;
 
            /* where it will come back after payment*/
-           res.redirect(`https://lens-lk-kart.netlify.app/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${_results.TXNDATE.slice(0,10)}&bank=${_results.BANKNAME.split('%')[0]}`)
+           res.redirect(`http://localhost:3000/viewBooking?status=${sat.split('_')[1]}&ORDERID=${_results.ORDERID}&date=${_results.TXNDATE.slice(0,10)}&bank=${_results.BANKNAME.split('%')[0]}`)
            });
        });
 
