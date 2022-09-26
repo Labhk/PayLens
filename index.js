@@ -122,7 +122,7 @@ app.post("/callback", (req, res) => {
            var dat = _results.TXNDATE;
 
            /* where it will come back after payment*/
-           res.redirect(`http://localhost:3000/`)
+           res.redirect(`https://framekart.netlify.app/`)
            });
        });
 
