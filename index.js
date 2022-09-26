@@ -29,7 +29,8 @@ app.post("/paynow", [parseUrl, parseJson], (req, res) => {
     customerPhone: req.body.phone,
     customerBrand: req.body.brand_name
 }
-if(!paymentDetails.amount || !paymentDetails.customerEmail || !paymentDetails.customerPhone ) {
+paymentDetails.customerId = paymentDetails.customerId.trim();
+if(!paymentDetails.amount || !paymentDetails.customerId || !paymentDetails.customerEmail || !paymentDetails.customerPhone ) {
   res.status(400).send('Payment failed')
 } else {
     var params = {};
@@ -38,7 +39,7 @@ if(!paymentDetails.amount || !paymentDetails.customerEmail || !paymentDetails.cu
     params['CHANNEL_ID'] = 'WEB';
     params['INDUSTRY_TYPE_ID'] = 'Retail';
     params['ORDER_ID'] = 'TEST_'  + paymentDetails.orderID;
-    // params['CUST_ID'] = paymentDetails.customerId;
+    params['CUST_ID'] = paymentDetails.customerId;
     params['TXN_AMOUNT'] = paymentDetails.amount;
     /* where is app is hosted (heroku url)*/
     params['CALLBACK_URL'] = 'https://pay-lens.herokuapp.com/callback';
