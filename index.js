@@ -122,7 +122,7 @@ app.post("/callback", (req, res) => {
            var dat = _results.TXNDATE;
 
            /* where it will come back after payment*/
-           res.redirect(`https://lk-lenskart.netlify.app`)
+           res.redirect(`http://localhost:3000/`)
            });
        });
 
