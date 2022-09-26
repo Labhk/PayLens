@@ -41,7 +41,7 @@ if(!paymentDetails.amount || !paymentDetails.customerId || !paymentDetails.custo
     params['CUST_ID'] = paymentDetails.customerId;
     params['TXN_AMOUNT'] = paymentDetails.amount;
     /* where is app is hosted (heroku url)*/
-    params['CALLBACK_URL'] = 'http://pay-lens.herokuapp.com/callback';
+    params['CALLBACK_URL'] = 'https://pay-lens.herokuapp.com/callback';
     params['EMAIL'] = paymentDetails.customerEmail;
     params['MOBILE_NO'] = paymentDetails.customerPhone;
   
@@ -122,7 +122,7 @@ app.post("/callback", (req, res) => {
            var dat = _results.TXNDATE;
 
            /* where it will come back after payment*/
-           res.redirect(`http://localhost:3000/viewBooking`)
+           res.redirect(`http://localhost:3000`)
            });
        });
 
